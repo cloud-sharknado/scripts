@@ -62,7 +62,20 @@ find . -xdev -printf '%s %p\n' |sort -nr|head -20
 #   33357291 ./usr/src/php-5.4.25/sapi/cgi/php-cgi
 #   33357291 ./usr/local/bin/php-cgi
 
-#   3rd way (using perl)
+#   3rd way
+find . -type f -exec wc -c {} \; | sort -rn | head -10 
+#  4148166656 ./Downloads/CentOS-7.0-1406-x86_64-DVD.iso
+#  3053371392 ./Downloads/kali-linux-1.0.9a-amd64.iso
+#  2585028608 ./Downloads/FreeBSD-10.1-RELEASE-amd64-dvd1.iso
+#  1162936320 ./Downloads/ubuntu-14.10-desktop-amd64.iso
+#  727711744 ./Downloads/elementaryos-stable-amd64.20130810.iso
+#  606076928 ./Downloads/archlinux-2014.12.01-dual.iso
+#  92441170 ./Downloads/plan9.iso.bz2
+#  63261271 ./Downloads/kernel/backup.tar.gz
+#  54329636 ./Downloads/kernel/20140917213118-linux-image-3.16.3-031603-generic_3.16.3-031603.201409171435_amd64.deb
+#  46398793 ./Downloads/book.pdf
+
+#   4th way (using perl)
 du -k | sort -n | perl -ne 'if ( /^(\d+)\s+(.*$)/){$l=log($1+.1);$m=int($l/log(1024)); printf ("%6.1f\t%s\t%25s  %s\n",($1/(2**(10*$m))),(("K","M","G","T","P")[$m]),"*"x (1.5*$l),$2);}'
 #
 #     == Sample output ==
@@ -90,3 +103,8 @@ du -k | sort -n | perl -ne 'if ( /^(\d+)\s+(.*$)/){$l=log($1+.1);$m=int($l/log(1
 #     13.5  G        ************************  ./apps/mysql
 #     14.2  G        ************************  ./apps
 #     20.8  G       *************************  .
+#
+# Refernec 
+# http://www.cyberciti.biz/faq/unix-disk-usage-command-examples/
+# http://www.cyberciti.biz/faq/check-free-space/
+# http://www.cyberciti.biz/faq/find-large-files-linux/
