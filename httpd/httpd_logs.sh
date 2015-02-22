@@ -60,6 +60,6 @@ awk -F'[ "]+' '$1 == "10.253.210.250" { pagecount[$7]++ } END { for (i in pageco
 
 # Reference
 #
-http://www.the-art-of-web.com/system/logs/
-http://ferd.ca/awk-in-20-minutes.html
-http://www.grymoire.com/Unix/Awk.html
+# http://www.the-art-of-web.com/system/logs/
+# http://ferd.ca/awk-in-20-minutes.html
+# http://www.grymoire.com/Unix/Awk.html
