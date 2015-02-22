@@ -1,3 +1,7 @@
+#   Collection of useful one-liners for analising of httpd access log.
+#   All examples from this file assumes that current working directory is directory where access log resides.
+#   access_log is assumed name of apache access log.
+
 # Number of requests per IP address (sorted)
 #
 awk '{!a[$1]++}END{for(i in a) if ( a[i] >10 ) print a[i],i }' access_log | sort -nr | less
