@@ -10,8 +10,8 @@ free -m
 
 # dmidecode memory information (hardware releted informations)
 dmidecode --type 17
-# or
-dmidecode --type memory
+# or To get all info about the memory type:
+dmidecode --type memory | less
 #              == Sample output ==
 #  dmidecode 2.11
 #  SMBIOS 2.5 present.
@@ -33,6 +33,26 @@ dmidecode --type memory
 #  	Serial Number: 05009F22
 #  	Asset Tag: Not Specified
 #  	Part Number: 72T232220HFA3SB
+
+# Maximum RAM Supported By The Server
+dmidecode -t 16
+# Handle 0x1000, DMI type 16, 23 bytes
+# Physical Memory Array
+#        Location: System Board Or Motherboard
+#        Use: System Memory
+#        Error Correction Type: Single-bit ECC
+#        Maximum Capacity: 192 GB
+#        Error Information Handle: Not Provided
+#        Number Of Devices: 9
+
+# Handle 0x1001, DMI type 16, 23 bytes
+# Physical Memory Array
+#        Location: System Board Or Motherboard
+#        Use: System Memory
+#        Error Correction Type: Single-bit ECC
+#        Maximum Capacity: 192 GB
+#        Error Information Handle: Not Provided
+#        Number Of Devices: 9
   	
 # safely clean memory cache
 sync; echo 3 > /proc/sys/vm/drop_caches
