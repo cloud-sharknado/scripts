@@ -105,6 +105,7 @@ du -k | sort -n | perl -ne 'if ( /^(\d+)\s+(.*$)/){$l=log($1+.1);$m=int($l/log(1
 #     20.8  G       *************************  .
 #
 # Refernec 
+# http://www.cyberciti.biz/faq/how-do-i-find-the-largest-filesdirectories-on-a-linuxunixbsd-filesystem/
 # http://www.cyberciti.biz/faq/unix-disk-usage-command-examples/
 # http://www.cyberciti.biz/faq/check-free-space/
 # http://www.cyberciti.biz/faq/find-large-files-linux/
