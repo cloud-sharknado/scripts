@@ -12,10 +12,10 @@
 MY_VERSION=0.1
 MY_DATE=$(/bin/date -d "2015-02-02" +'%B,%d %Y')
 
-TIB_DOMAIN="vipmobileapps"
+TIB_DOMAIN="tradomain"
 TIB_USER="admin"
 TIB_PASSWD="admin"
-TIB_TRA_BIN_DIR="/apps/tibco/tra/5.7/bin"
+TIB_TRA_BIN_DIR="/path/to/tra/x.y/bin"
 CURR_DIR="$(pwd)"
 CMD="echo ${TIB_TRA_BIN_DIR}/AppManage"
 
