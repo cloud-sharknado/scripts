@@ -55,4 +55,9 @@ dmidecode -t 16
 #        Number Of Devices: 9
   	
 # safely clean memory cache
-sync; echo 3 > /proc/sys/vm/drop_caches
+# To free pagecache:
+sync; echo 1 > /proc/sys/vm/drop_caches
+# To free dentries and inodes:
+sync; echo 2 > /proc/sys/vm/drop_caches
+# To free pagecache, dentries and inodes
+sync; echo 3 >  /proc/sys/vm/drop_caches
