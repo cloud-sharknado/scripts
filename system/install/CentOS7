@@ -1,0 +1,61 @@
+#version=RHEL7
+
+install
+# System authorization information
+auth --enableshadow --passalgo=sha512
+
+# Use CDROM installation media
+cdrom
+# Accept EULA
+eula --agreed
+
+services --enabled=NetworkManager,sshd
+reboot
+
+# Run the Setup Agent on first boot
+#firstboot --enable
+ignoredisk --only-use=sda
+# Keyboard layouts
+keyboard --vckeymap=us --xlayouts='us'
+# System language
+lang en_US.UTF-8
+# SELinux
+selinux --enforcing
+# Network information
+network  --bootproto=dhcp --device=eno16777736 --onboot=on --ipv6=off
+network  --hostname=default-vm
+# Root password
+rootpw --iscrypted HASHGOESHERE
+# System timezone
+timezone Europe/London --isUtc --ntpservers=prime.transformers
+# System bootloader configuration
+bootloader --location=mbr --boot-drive=sda
+# Partition clearing information
+clearpart --all --drives=sda
+ignoredisk --only-use=sda
+# LVM
+
+# Disk partitioning information
+part pv.18 --fstype="lvmpv" --ondisk=sda --size=8004
+part pv.11 --fstype="lvmpv" --ondisk=sda --size=8004
+part /boot --fstype="ext4" --ondisk=sda --size=1000
+volgroup lg_data --pesize=4096 pv.18
+volgroup lg_os --pesize=4096 pv.11
+logvol /  --fstype="xfs" --size=4000 --name=lv_root --vgname=lg_os
+logvol /home  --fstype="xfs" --size=2000 --name=lv_home --vgname=lg_data
+logvol /tmp  --fstype="xfs" --size=1000 --name=lv_tmp --vgname=lg_os
+logvol /var  --fstype="xfs" --size=2000 --name=lv_var --vgname=lg_os
+logvol /var/tmp  --fstype="xfs" --size=1000 --name=lv_var_tmp --vgname=lg_os
+logvol /var/www  --fstype="xfs" --size=5000 --name=lv_var_www --vgname=lg_data
+logvol /var  --fstype="xfs" --size=1000 --name=lv_var --vgname=lg_os
+logvol /var/log  --fstype="xfs" --size=1500 --name=lv_var_log --vgname=lg_os
+logvol /var/log/audit  --fstype="xfs" --size=500 --name=lv_var_log_audit --vgname=lg_os
+logvol /var/tmp  --fstype="ext4" --size=500 --name=lv_var_tmp --vgname=lg_os 
+logvol swap  --fstype="swap" --size=1000 --name=lv_swap --vgname=lg_data
+
+%packages
+@core
+ %end
+
+%post
+%end
