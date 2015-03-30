@@ -55,7 +55,7 @@ logvol swap  --fstype="swap" --size=1000 --name=lv_swap --vgname=lg_data
 
 %packages
 @core
- %end
+%end
 
 %post
 %end
