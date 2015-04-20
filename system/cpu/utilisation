@@ -1,0 +1,4 @@
+# list all the processes on the box not being run by you! 
+ps aux | grep -v `whoami`
+# list the top ten time-wasters
+ps aux --sort=-%cpu | grep -v -m 11 `whoami`
